@@ -9,6 +9,12 @@
 ***************************************************************************************************/
 package com.alexbaek.common.appinfo.dao;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.alexbaek.common.appinfo.vo.AppInfoVO;
+
 /**
  * The Class AppInfoDao.java.
  * 설명 :
@@ -16,6 +22,13 @@ package com.alexbaek.common.appinfo.dao;
  * @author 백우영
  * @version 1.0
  */
-public interface AppInfoDao {
-
+@Component
+public class AppInfoDao {
+	
+	@Autowired
+	private SqlSession sqlSession;
+	
+	public AppInfoVO selectAppInfo(AppInfoVO appInfo) {
+		return this.sqlSession.selectOne("selectAppInfo", appInfo);
+	}
 }

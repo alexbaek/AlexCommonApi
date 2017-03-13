@@ -62,15 +62,15 @@ public class AppInfoController {
     	logger.info("==================== {} ====================", "AppInfoController :: getAppInfo");
     	
     	AppInfoVO resultVO = new AppInfoVO();
-    	resultVO.setServiceId("1004");
+    	resultVO.setServiceId("3210001");
     	resultVO.setServiceType("01");
     	resultVO.setServiceName("App Info");
     	resultVO.setServicePackage("com.alexbaek.common");
     	resultVO.setServiceRegDate("1987-03-01");
     	
-    	AppInfoVO temp = mAppInfoService.getAppInfo();
+    	AppInfoVO temp = mAppInfoService.getAppInfo(resultVO);
     	
-    	return resultVO;
+    	return temp;
     }
     
     

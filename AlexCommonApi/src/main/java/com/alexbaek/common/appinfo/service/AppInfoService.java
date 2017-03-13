@@ -19,5 +19,5 @@ import com.alexbaek.common.appinfo.vo.AppInfoVO;
  * @version 1.0
  */
 public interface AppInfoService {
-	public AppInfoVO getAppInfo();
+	public AppInfoVO getAppInfo(AppInfoVO appInfo);
 }

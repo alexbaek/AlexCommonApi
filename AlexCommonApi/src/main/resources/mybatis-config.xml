@@ -16,15 +16,14 @@
        limitations under the License.
 
 -->
-<!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.alexbaek.common.appinfo.dao.AppInfoDao">
-
-	
-    <select id="selectAppInfo" resultType="AppInfoVO">
-        SELECT *
-		FROM APP_COMMON_SERVICE_INFO
-		WHERE SERVICE_ID = #{serviceId}
-    </select>
-</mapper>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <package name="com.alexbaek.common.appinfo.vo"/>
+    </typeAliases>
+    <mappers>
+        <mapper resource="static/mapper/AppInfoMapper.xml"/>
+    </mappers>
+</configuration>

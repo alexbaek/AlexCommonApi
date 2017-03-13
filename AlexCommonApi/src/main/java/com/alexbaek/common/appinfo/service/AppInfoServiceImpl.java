@@ -26,7 +26,7 @@ import com.alexbaek.common.appinfo.vo.AppInfoVO;
 public class AppInfoServiceImpl implements AppInfoService {
 	
 	@Autowired
-	private AppInfoDao mAppInfoDao;
+	private AppInfoDao appInfoDao;
 
 	/**
 	 * Comment :
@@ -34,10 +34,12 @@ public class AppInfoServiceImpl implements AppInfoService {
 	 * @return
 	 */
 	@Override
-	public AppInfoVO getAppInfo() {
+	public AppInfoVO getAppInfo(AppInfoVO appInfo) {
 		// TODO Auto-generated method stub
 		
-		return null;
+		AppInfoVO result = appInfoDao.selectAppInfo(appInfo);
+		
+		return result;
 	}
 
 }
