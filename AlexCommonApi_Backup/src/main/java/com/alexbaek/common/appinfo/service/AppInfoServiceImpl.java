@@ -14,7 +14,7 @@ package com.alexbaek.common.appinfo.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.alexbaek.common.appinfo.dao.AppInfoDao;
+import com.alexbaek.common.appinfo.dao.AppInfoDaoMapper;
 import com.alexbaek.common.appinfo.vo.AppInfoVO;
 
 /**
@@ -28,7 +28,7 @@ import com.alexbaek.common.appinfo.vo.AppInfoVO;
 public class AppInfoServiceImpl implements AppInfoService {
 	
 	@Autowired
-	private AppInfoDao appInfoDao;
+	private AppInfoDaoMapper appInfoDao;
 
 	/**
 	 * Comment :
@@ -37,8 +37,14 @@ public class AppInfoServiceImpl implements AppInfoService {
 	 * @return
 	 */
 	public AppInfoVO getAppInfo(AppInfoVO appInfo) {
-		// TODO Auto-generated method stub
-		AppInfoVO result = appInfoDao.selectAppInfo(appInfo);
+		
+		AppInfoVO result = null;
+		try {
+			result = appInfoDao.selectAppInfo(appInfo);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return result;
 	}
