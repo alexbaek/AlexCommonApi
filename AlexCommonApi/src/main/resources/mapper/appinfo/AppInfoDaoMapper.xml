@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.alexbaek.common.appinfo.dao.AppInfoDaoMapper">
+	
+	<!-- 앱 정보 조회 -->
+	<select id="selectAppInfo" resultType="appInfoVO" parameterType="appInfoVO">
+		SELECT 
+			SERVICE_ID, 
+			SERVICE_TYPE, 
+			SERVICE_NAME, 
+			SERVICE_PACKAGE, 
+			SERVICE_REG_DATE
+		FROM 
+			APP_COMMON_SERVICE_INFO
+		WHERE 
+			SERVICE_ID = #{serviceId}
+	</select>
+</mapper>
