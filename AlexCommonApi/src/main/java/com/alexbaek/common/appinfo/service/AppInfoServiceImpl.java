@@ -9,11 +9,15 @@
 ***************************************************************************************************/
 package com.alexbaek.common.appinfo.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alexbaek.common.appinfo.dao.AppInfoDaoMapper;
 import com.alexbaek.common.appinfo.vo.AppInfoVO;
+import com.alexbaek.common.appinfo.vo.NoticeInfoVO;
+import com.alexbaek.common.appinfo.vo.ResponseAppInfoVO;
 
 /**
  * The Class AppInfoServiceImpl.java.
@@ -29,22 +33,31 @@ public class AppInfoServiceImpl implements AppInfoService {
 	private AppInfoDaoMapper appInfoDao;
 
 	/**
-	 * Comment :
+	 * Comment : 서비스 정보 조회.
 	 * Date	: 2017. 3. 20.
 	 * @param appInfo
 	 * @return
 	 */
-	public AppInfoVO getAppInfo(AppInfoVO appInfo) {
+	public ResponseAppInfoVO getAppInfo(AppInfoVO appInfo) throws Exception {
 		
-		AppInfoVO result = null;
+		ResponseAppInfoVO resultVO;
+		
+		// Step 1. 서비스 기본 정보 조회.
+		AppInfoVO appInfoVO = null;
 		try {
-			result = appInfoDao.selectAppInfo(appInfo);
+			appInfoVO = appInfoDao.selectAppInfo(appInfo);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return result;
+		// Step 2. 공지사항 조회.
+		ArrayList<NoticeInfoVO> noticeInfoVO = null;
+		noticeInfoVO = appInfoDao.selectNoticeInfo(appInfo);
+		
+		
+		
+		return null;
 	}
 	
 	

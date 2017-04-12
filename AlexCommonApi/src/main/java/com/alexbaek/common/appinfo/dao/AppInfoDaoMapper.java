@@ -9,7 +9,10 @@
 ***************************************************************************************************/
 package com.alexbaek.common.appinfo.dao;
 
+import java.util.ArrayList;
+
 import com.alexbaek.common.appinfo.vo.AppInfoVO;
+import com.alexbaek.common.appinfo.vo.NoticeInfoVO;
 
 /**
  * The Class AppInfoDaoMapper.java.
@@ -20,5 +23,23 @@ import com.alexbaek.common.appinfo.vo.AppInfoVO;
  */
 public interface AppInfoDaoMapper {
 	
+	/**
+	 * Comment : 기본적인 서비스 정보 리턴.
+	 * Date	: 2017. 4. 10.
+	 * @return AppInfoVO
+	 * @param appInfo
+	 * @return
+	 * @throws Exception
+	 */
 	public AppInfoVO selectAppInfo(AppInfoVO appInfo) throws Exception;
+	
+	/**
+	 * Comment : 공지사항 정보 리턴.
+	 * Date	: 2017. 4. 10.
+	 * @return ArrayList<NoticeInfoVO>
+	 * @param appInfo
+	 * @return
+	 * @throws Exception
+	 */
+	public ArrayList<NoticeInfoVO> selectNoticeInfo(AppInfoVO appInfo) throws Exception;
 }

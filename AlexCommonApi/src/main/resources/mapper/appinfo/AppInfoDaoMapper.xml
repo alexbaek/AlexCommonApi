@@ -10,10 +10,25 @@
 			SERVICE_TYPE, 
 			SERVICE_NAME, 
 			SERVICE_PACKAGE, 
+			SERVICE_VERSION,
+			SERVICE_UPDATE_URL,
 			SERVICE_REG_DATE
 		FROM 
 			APP_COMMON_SERVICE_INFO
 		WHERE 
+			SERVICE_ID = #{serviceId}
+	</select>
+	
+	<!-- 공지사항 조회 -->
+	<select id="getNoticeInfo" resultType="noticeInfoVO" parameterType="appInfoVO">
+		SELECT
+			NOTICE_ID,
+		    SERVICE_ID,
+		    NOTICE_CONTENT,
+		    NOTICE_REG_DATE
+		FROM
+			APP_COMMON_NOTICE_INFO
+		WHERE
 			SERVICE_ID = #{serviceId}
 	</select>
 </mapper>

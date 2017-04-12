@@ -9,15 +9,21 @@
 ***************************************************************************************************/
 package com.alexbaek.common.appinfo.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alexbaek.common.appinfo.service.AppInfoService;
 import com.alexbaek.common.appinfo.vo.AppInfoVO;
+import com.alexbaek.common.appinfo.vo.NoticeInfoVO;
+import com.alexbaek.common.appinfo.vo.ResponseAppInfoVO;
 
 /**
  * The Class AppInfoController.java.
@@ -30,6 +36,9 @@ import com.alexbaek.common.appinfo.vo.AppInfoVO;
 @RequestMapping("/appinfo")
 public class AppInfoController {
 	
+	// TODO. 공지사항 개발
+	// TODO. 
+	
 	private static final Logger logger = LoggerFactory.getLogger(AppInfoController.class);
 		
 	@Autowired
@@ -40,22 +49,35 @@ public class AppInfoController {
 	  * Date	: 2017. 2. 22.
 	  * @return void
 	  */
-	 @RequestMapping(value = "/getAppInfo", method = RequestMethod.POST)
-	 public AppInfoVO getAppInfo() {
+	 @RequestMapping(value = "/getAppInfo", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	 public ResponseAppInfoVO getAppInfo(HttpServletRequest req, @RequestBody AppInfoVO reqAppInfo) {
 	 	
 	 	logger.info("==================== {} ====================", "AppInfoController :: getAppInfo");
 	 	
-	 	AppInfoVO resultVO = new AppInfoVO();
-	 	resultVO.setServiceId("3210001");
-	 	resultVO.setServiceType("01");
-	 	resultVO.setServiceName("App Info");
-	 	resultVO.setServicePackage("com.alexbaek.common");
-	 	resultVO.setServiceRegDate("1987-03-01");
+	 	ResponseAppInfoVO resultVO;
+		try {
+			resultVO = mAppInfoService.getAppInfo(reqAppInfo);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	 	
-	 	AppInfoVO temp = mAppInfoService.getAppInfo(resultVO);
-	 	
-	 	return temp;
+	 	return null;
 	 }
 	 
-	 
+	 /**
+	  * Comment : 공지사항 정보를 리턴.
+	  * Date	: 2017. 4. 7.
+	  * @return NoticeInfoVO
+	  * @return
+	  */
+	 @RequestMapping(value = "/getNoticeInfo", method = RequestMethod.POST)
+	 public NoticeInfoVO getNoticeInfo() {
+		 
+		 logger.info("==================== {} ====================", "AppInfoController :: getNoticeInfo");
+		 
+		 
+		 
+		 return null;
+	 }
 }

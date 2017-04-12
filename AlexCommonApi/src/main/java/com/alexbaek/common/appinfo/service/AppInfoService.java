@@ -10,6 +10,7 @@
 package com.alexbaek.common.appinfo.service;
 
 import com.alexbaek.common.appinfo.vo.AppInfoVO;
+import com.alexbaek.common.appinfo.vo.ResponseAppInfoVO;
 
 /**
  * The Class AppInfoService.java.
@@ -19,5 +20,14 @@ import com.alexbaek.common.appinfo.vo.AppInfoVO;
  * @version 1.0
  */
 public interface AppInfoService {
-	public AppInfoVO getAppInfo(AppInfoVO appInfo);
+	
+	/**
+	 * Comment : 서비스 정보 조회.
+	 * Date	: 2017. 4. 7.
+	 * @return AppInfoVO
+	 * @param appInfo
+	 * @return
+	 */
+	public ResponseAppInfoVO getAppInfo(AppInfoVO appInfo) throws Exception;
+	
 }
